@@ -10,7 +10,7 @@ import Home from './home/Home';
 const routing = (
     <Router>
       <div>
-        <Redirect exact from="/" to="/home" />
+        {/* <Redirect exact from="/" to="/home" /> */}
         <Route path="/" component={App} />
         <Route path="/login" component={Login} />
         <Route path="/home" component={Home} />

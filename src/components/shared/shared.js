@@ -1,3 +1,3 @@
-import {  Navbar, Form, Button, Nav, Alert, Card } from 'bootstrap-4-react';
+import { Navbar, Form, Button, Nav, Alert, Card, Spinner } from 'reactstrap';
 
-export default { Navbar, Form, Button, Nav, Alert, Card };
+export default { Navbar, Form, Button, Nav, Alert, Card, Spinner };

@@ -1,64 +1,76 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './login.css'
-import bootstrap from '../../shared/shared'
+import { Card, Form, Button, Input, Spinner, FormGroup, CardBody } from 'reactstrap';
+// import bootstrap from '../../shared/shared'
 
 export default class Login extends React.Component {
 
   constructor (props) {
     super(props);
     this.state = {
+      isLoading: false,
       formFields: {
         email: '',
         password: ''
       }
     };
+  }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const isLoading = true
+    this.setState({
+      isLoading : isLoading
+    })
+    if(this.state.formFields.email && this.state.formFields.password) {
+      fetch('oauth/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: this.state.formFields.email,
+          password: this.state.formFields.password,
+          grant_type:'password',
+          client_id: '2',
+          client_secret: 'pK5Qay0VYl0ItsWLnVgIaua7hWAftk4T2ZCrBnqX',  
+        })
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem('access_token', data.access_token);
+        const isLoading = false
+        this.setState({
+          isLoading : isLoading
+        })
+        console.log(data)
+      })
     }
+  }
 
   render() {
     return (
      <div className="Container">
-         <bootstrap.Card>
-            <bootstrap.Card.Body>
-             {<span>{}</span>}
-              <bootstrap.Form onSubmit={this.handleSubmit(this.state.formFields)}>
-                <bootstrap.Form.Group>
-                  <label htmlFor="exampleInputEmail1">Email address</label>
-                  <bootstrap.Form.Input onChange={this.handleChange}  name="email" type="email" id="exampleInputEmail1" placeholder="Enter email" />
-                  <bootstrap.Form.Text  text="muted">We'll never share your email with anyone else.</bootstrap.Form.Text>
-                </bootstrap.Form.Group>
-                <bootstrap.Form.Group>
-                  <label htmlFor="exampleInputPassword1">Password</label>
-                  <bootstrap.Form.Input  onChange={this.handleChange} name="password" type="password" id="exampleInputPassword1" placeholder="Password" />
-                </bootstrap.Form.Group>
-                <bootstrap.Form.Group>
-                  <bootstrap.Form.Check>
-                    <bootstrap.Form.CheckInput type="checkbox" id="exampleCheck1" />
-                    <bootstrap.Form.CheckLabel htmlFor="exampleCheck1">Check me out</bootstrap.Form.CheckLabel>
-                  </bootstrap.Form.Check>
-                </bootstrap.Form.Group>
-                <bootstrap.Button primary outline>Submit</bootstrap.Button>
-              </bootstrap.Form>
-            </bootstrap.Card.Body>
-         </bootstrap.Card>
+         <Card>
+            <CardBody>
+              <Form onSubmit={this.handleSubmit} noValidate >
+                <FormGroup>
+                  <label htmlFor="email">Email address</label>
+                  <Input id="email" type="email" onChange={(e) => this.state.formFields.email = e.target.value} placeholder="Enter email" />
+                </FormGroup>
+                <FormGroup>
+                  <label htmlFor="password">Password</label>
+                  <Input id="password" type="password" onChange={(e) => this.state.formFields.password = e.target.value} placeholder="Password" />
+                </FormGroup>
+                <FormGroup>
+                </FormGroup>
+                <Spinner style={this.state.isLoading ? { width: '3rem', height: '3rem', display:'block' } : {display: 'none'}}  />{' '}
+                <Button style={!this.state.isLoading ? { display:'block' } : {display: 'none'}} color="primary" size="lg" type="submit">Submit</Button>
+              </Form>
+            </CardBody>
+         </Card>
      </div>
     )
   }
 
-
-
-  handleChange (event) {
-    let formFields = {...this.state.formFields}
-   formFields[event.target.name] = event.target.value;
-   this.setState({
-     formFields
-   });
-  }
-
-  handleSubmit (formFields) {
-    
-  }
-
 }
+ 
+

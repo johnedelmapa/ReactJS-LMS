@@ -1,17 +1,16 @@
 import React from 'react';
+import logo from './logo.svg';
 import './App.css';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
-import Home from './components/home/Home';
+import Header from './components/header/Header';
 
 
 export default function App() {
+
   return (
    <div>
-     
+     <Header/>
    </div>
 
    
   );
 }
-
-

@@ -1,34 +1,31 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import './Header.css'
-import bootstrap from '../shared/shared'
+import { Nav, NavItem, NavLink, NavbarBrand, Navbar } from 'reactstrap';
+// import bootstrap from '../shared/shared'
 
 export default class Header extends React.Component {
 
   render() {
     return (
       <div className="Container-Header">
-      <bootstrap.Navbar light bg="light">
-     
-        <bootstrap.Navbar.Brand href="/">ReactJS</bootstrap.Navbar.Brand>
-        
+      <Navbar light bg="light">
+        <NavbarBrand  href="/">ReactJS</NavbarBrand >
+          <Nav>
 
-          <bootstrap.Nav>
+           <NavItem>
+              <NavLink active  className="" href="/login"> <span>Login</span></NavLink>
+            </NavItem>
 
-           <bootstrap.Nav.Item>
-              <bootstrap.Nav.Link active  className="" href="/login"> <span>Login</span></bootstrap.Nav.Link>
-            </bootstrap.Nav.Item>
+            <NavItem>
+              <NavLink><span>|</span></NavLink>
+            </NavItem>
 
-            <bootstrap.Nav.Item>
-              <bootstrap.Nav.Link><span>|</span></bootstrap.Nav.Link>
-            </bootstrap.Nav.Item>
+                <NavItem >
+                  <NavLink  className="" href="/registration"><span>Registration</span></NavLink>
+                </NavItem>
 
-                <bootstrap.Nav.Item >
-                  <bootstrap.Nav.Link  className="" href="/registration"><span>Registration</span></bootstrap.Nav.Link>
-                </bootstrap.Nav.Item>
-
-              </bootstrap.Nav>
-      </bootstrap.Navbar>
+              </Nav>
+      </Navbar>
       </div>
    
     )
