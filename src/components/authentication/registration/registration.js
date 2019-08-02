@@ -1,11 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './registration.css'
-import bootstrap from '../../shared/shared'
 
 export default class Registration extends React.Component {
+  constructor () {
+    super ();
+    this.state = {
+      people: [],
+      id: '',
+    };
+
+  }
+
+ 
+
   render() {
     return (
-     <div>Registration works</div>
+      <ul>
+        
+      </ul>
     )
   }
+
 }
+

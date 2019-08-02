@@ -18,6 +18,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "https://reactjs-apiv1.herokuapp.com",
   "browserslist": {
     "production": [
       ">0.2%",

@@ -1,5 +1,18 @@
 
 a.active.nav-link.Test {
     color:rgb(61, 56, 56);
-    
+}
+
+.Container-Header{
+    width: 75%;
+    margin: 0 auto;
+}
+
+span{
+    color:black;
+    text-decoration: none;
+}
+
+a.active.nav-link a:hover{
+    text-decoration: none;
 }
