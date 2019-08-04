@@ -16,3 +16,11 @@ span{
 a.active.nav-link a:hover{
     text-decoration: none;
 }
+
+.Header-Show {
+    display: block;
+}
+
+.Header-Hidden {
+    display: none;
+}

@@ -1,20 +1,20 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { Redirect } from 'react-router';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Redirect, BrowserRouter as Router } from 'react-router-dom'
 import Login from './authentication/login/login'
 import Registration from './authentication/registration/registration'
 import App from '../App'
-import Home from './home/Home';
+import Home from '../components/home/home'
 
 const routing = (
     <Router>
       <div>
-        {/* <Redirect exact from="/" to="/home" /> */}
         <Route path="/" component={App} />
-        <Route path="/login" component={Login} />
         <Route path="/home" component={Home} />
+        <Route path="/login" component={Login} />
         <Route path="/registration" component={Registration} />
+        <Route exact path="/" render={() => (
+          <Redirect to="/Home" />
+          )} />
       </div>
     </Router>
   )
