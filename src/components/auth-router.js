@@ -6,17 +6,18 @@ import App from '../App'
 import Home from '../components/home/home'
 
 const routing = (
+
     <Router>
-      <div>
         <Route path="/" component={App} />
-        <Route path="/home" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Registration} />
+        <Route path="/home" component={Home} />
         <Route exact path="/" render={() => (
           <Redirect to="/Home" />
           )} />
-      </div>
     </Router>
+ 
+
   )
 
   export default routing

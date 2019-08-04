@@ -1,6 +1,6 @@
 import React from 'react';
 import './registration.css';
-import { Card, Form, Button, Input, Spinner, FormGroup, CardBody } from 'reactstrap';
+import {  Form, Button, Input , FormGroup } from 'reactstrap';
 
 export default class Registration extends React.Component {
   constructor () {

@@ -1,7 +1,8 @@
 import React from 'react';
-import './login.css'
+import './login.css';
 import { Card, Form, Button, Input, Spinner, FormGroup, CardBody } from 'reactstrap';
 import ErrorHandling from '../core/errorHandling';
+import { Link } from 'react-router-dom';
 
 
 export default class Login extends React.Component {
@@ -12,6 +13,7 @@ export default class Login extends React.Component {
       isLoading: false,
     };
   }
+
 
    handleSubmit = async (event) => {
     event.preventDefault();
@@ -38,6 +40,7 @@ export default class Login extends React.Component {
           this.setState({
             isLoading : isLoading,
           })
+         
         }   
       }).catch((error) => {
         console.log('this is an: '.concat(error))
@@ -61,14 +64,11 @@ export default class Login extends React.Component {
           localStorage.setItem('user_id', data.id);
           localStorage.setItem('user_name', data.name);
         }
-        
-      
-       
       }).catch((error) => {
           console.log('this is an: '.concat(error))
     })
     }
-    
+    return <Link to="/home" />
   }
 
   render() {
